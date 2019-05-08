@@ -1,11 +1,18 @@
 ---
 title: Chocolatey的安装与使用
 date: 2019-05-08 10:41:08
+categories:
+ - chocolatey
 tags:
+ - chocolatey
+ - windows
+ - dart
 ---
 ### 前言
  * windows 下的apt-get
  * [官网](https://chocolatey.org/)
+<!--more-->
+
 ### 安装
  在线安装
  * 管理员打开cmd输入命令
@@ -19,6 +26,7 @@ tags:
  ```
     choco upgrade chocolatey
  ```
+
 ### 使用
  * 安装命令
  ```

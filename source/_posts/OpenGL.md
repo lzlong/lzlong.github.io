@@ -2,7 +2,15 @@
 title: OpenGl
 date: 2019-05-08 10:41:08
 tags:
+ - OpenGl
+categories:
+ - 笔记
+ - OpenGl
 ---
+### OpenGl 笔记
+
+<!--more-->
+
 ### GLSurfaceView
 #### 特性
  1. 提供并且管理一个独立的Surface。

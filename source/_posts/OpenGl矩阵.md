@@ -2,6 +2,10 @@
 title: OpenGl矩阵
 date: 2019-05-08 10:41:08
 tags:
+ - OpenGl
+categories:
+ - 笔记
+ - OpenGl
 ---
 ```
     Matrix.setLookAtM(viewMatrix, 0,

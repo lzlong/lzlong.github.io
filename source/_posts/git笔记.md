@@ -1,8 +1,18 @@
 ---
 title: git笔记
 date: 2019-05-08 10:59:05
+categories:
+ - github
+ - git
 tags:
+ - git
+ - github
 ---
+
+记录git使用过程中遇到的问题和解决办法
+
+<!--more-->
+
  * git add 时会报一个错误
     ```
     warning: LF will be replaced by CRLF in XXXXXXXXXXXXXX.

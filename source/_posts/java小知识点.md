@@ -2,6 +2,10 @@
 title: Java小知识点
 date: 2019-05-08 10:41:08
 tags:
+ - java
+categories:
+ - 笔记
+ - java
 ---
 
 * Collections.addAll() 与 ArrayList.addAll()

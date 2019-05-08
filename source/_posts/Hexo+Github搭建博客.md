@@ -1,13 +1,19 @@
 ---
 title: Hexo+Github搭建博客
 date: 2019-05-08 10:41:08
+categories:
+ - github
+ - hexo
 tags:
+ - hexo
+ - github
 ---
 
 ### 准备
  * 有一个github账号，没有的话去注册一个；
  * 安装了node.js、npm，并了解相关基础知识；
  * 安装了git for windows（或者其它git客户端）
+<!--more-->
 
 ### 开始
  * 创建仓库
@@ -71,13 +77,37 @@ Hi liuxianan! You've successfully authenticated, but GitHub does not provide she
     git config --global core.autocrlf false
     ```
 
-#### 保留CNAME、README.md等文件
- * 非md文件可以把他们放到source文件夹
- * 每次生成之后、上传之前，手动将README.md复制到public目录，并删除README.html
+#### 上传源文件
+  * hexo d上传部署到github的其实是hexo编译后的文件，是用来生成网页的，不包含源文件, 也就是只上传了.deploy_git里的文件, 而要上传我们的source, 配置文件, 主题等可以使用分支来完成
+  * github新建分支
+    ![新建分支](/images/newBranch.png)
+    在输入框中填写需要的分支名, 如果没有这个分支会提示创建
+  * 设置默认分支
+    ![默认分支](/images/默认分支.png)
+    在设置里将创建的分支改为默认分支, 这样clone的时候就会默认clone hexo分支下的数据
+  * clone之后将.git文件夹之外的文件全部删除, 然后将你本地hexo文件夹下的内容复制过来除了.deploy_git
+  * .gitignore 内容如下
+  ```
+  .DS_Store
+  Thumbs.db
+  db.json
+  *.log
+  node_modules/
+  public/
+  .deploy*/
+  ```
+  没有创建一个, 有则保证内容一致, 当前文件在hexo根目录下
+  * 如果clone过主题文件需要删除主题文件夹下的.git否则不能上传
+  * 上传
+  ```
+  git add .
+  git commit –m "add branch"
+  git push
+  ```
 
 #### 常用命令
- *
-    ```
+ * 常用命令 
+     ```
     hexo new "postName" #新建文章
     hexo new page "pageName" #新建页面
     hexo generate #生成静态页面至public目录
@@ -86,6 +116,7 @@ Hi liuxianan! You've successfully authenticated, but GitHub does not provide she
     hexo help  # 查看帮助
     hexo version  #查看Hexo的版本
     ```
+
  * 简写
     ```
     hexo n == hexo new
@@ -98,6 +129,6 @@ Hi liuxianan! You've successfully authenticated, but GitHub does not provide she
     hexo s -g #生成并本地预览
     hexo d -g #生成并上传
     ```
-#### 引用及参考
+### 引用及参考
  * https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html
  * https://blog.csdn.net/sinat_37781304/article/details/82729029

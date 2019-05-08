@@ -2,7 +2,17 @@
 title: 百度地图api使用
 date: 2019-05-08 10:41:08
 tags:
+ - Android
+categories:
+ - 笔记
+ - Android
+ - 百度地图
 ---
+
+百度地图AndroidApi使用注意事项
+
+<!--more-->
+
 ### 配置
  * sdk包 按需下载
  * 权限
