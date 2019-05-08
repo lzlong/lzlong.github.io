@@ -62,6 +62,14 @@ Hi liuxianan! You've successfully authenticated, but GitHub does not provide she
     ```
  * 执行 hexo d
  * 如果报 Deployer not found: github 或者 Deployer not found: git 错误则执行npm install hexo-deployer-git --save
+ * 如果报
+    ```
+    warning: LF will be replaced by CRLF in XXXXXXXXXXXXXX.
+    ```
+    解决
+    ```
+    git config --global core.autocrlf false
+    ```
 
 #### 保留CNAME、README.md等文件
  * 非md文件可以把他们放到source文件夹
