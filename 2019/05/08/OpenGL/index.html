@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hexo</title>
+  <title>OpenGl | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="GLSurfaceView特性 提供并且管理一个独立的Surface。 提供并且管理一个EGL display，它能让opengl把内容渲染到上述的Surface上。 支持用户自定义渲染器(Render)，通过setRenderer设置一个自定义的Renderer。 让渲染器在独立的GLThread线程里运作，和UI线程分离。 支持按需渲染(on-demand)和连续渲染(continuous)两">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGl">
+<meta property="og:url" content="http://yoursite.com/2019/05/08/OpenGL/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="GLSurfaceView特性 提供并且管理一个独立的Surface。 提供并且管理一个EGL display，它能让opengl把内容渲染到上述的Surface上。 支持用户自定义渲染器(Render)，通过setRenderer设置一个自定义的Renderer。 让渲染器在独立的GLThread线程里运作，和UI线程分离。 支持按需渲染(on-demand)和连续渲染(continuous)两">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-08T02:50:26.516Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="OpenGl">
+<meta name="twitter:description" content="GLSurfaceView特性 提供并且管理一个独立的Surface。 提供并且管理一个EGL display，它能让opengl把内容渲染到上述的Surface上。 支持用户自定义渲染器(Render)，通过setRenderer设置一个自定义的Renderer。 让渲染器在独立的GLThread线程里运作，和UI线程分离。 支持按需渲染(on-demand)和连续渲染(continuous)两">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,295 +154,181 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-OpenGL" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      OpenGl
+    </h1>
+  
+
+        
+        <a href="/2019/05/08/OpenGL/" class="archive-article-date">
+  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="GLSurfaceView"><a href="#GLSurfaceView" class="headerlink" title="GLSurfaceView"></a>GLSurfaceView</h3><h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ol>
+<li>提供并且管理一个独立的Surface。</li>
+<li>提供并且管理一个EGL display，它能让opengl把内容渲染到上述的Surface上。</li>
+<li>支持用户自定义渲染器(Render)，通过setRenderer设置一个自定义的Renderer。</li>
+<li>让渲染器在独立的GLThread线程里运作，和UI线程分离。</li>
+<li>支持按需渲染(on-demand)和连续渲染(continuous)两种模式。</li>
+<li>GPU加速：GLSurfaceView的效率是SurfaceView的30倍以上，SurfaceView使用画布进行绘制，GLSurfaceView利用GPU加速提高了绘制效率。</li>
+<li>View的绘制onDraw(Canvas canvas)使用Skia渲染引擎渲染，而GLSurfaceView的渲染器Renderer的onDrawFrame(GL10 gl)使用opengl绘制引擎进行渲染。</li>
+</ol>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ul>
+<li>可直接使用GLSurfaceView, 如果有复杂操作也可继承重载</li>
+<li>onCreate时设置Renderer, 使用setRenderer()方法</li>
+<li>设置RenderingMode<ul>
+<li>RENDERMODE_CONTINUOUSLY, 刷新的帧率是60FPS，16ms就重绘一次</li>
+<li>RENDERMODE_WHEN_DIRTY,被动渲染，在surfaceCreate的时候会绘制一次，之后只有在调用requestRender或者onResume等方法主动请求重绘时才会进行渲染</li>
+</ul>
+</li>
+</ul>
+<h3 id="GLRender"><a href="#GLRender" class="headerlink" title="GLRender"></a>GLRender</h3>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/git笔记/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:59:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/git笔记/">git笔记</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/08/OpenGL/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/百度地图api使用/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/05/08/Windows软件/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Windows软件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/08/OpenGl矩阵/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OpenGl矩阵</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/百度地图api使用/">百度地图api使用</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/Windows软件/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/Windows软件/">Windows软件</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/OpenGL/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/OpenGL/">OpenGl</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/OpenGl矩阵/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/OpenGl矩阵/">OpenGl矩阵</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/手机状态查询/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/手机状态查询/">手机状态查询</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/dart/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/dart/">dart</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/java小知识点/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/java小知识点/">Java小知识点</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/控件属性/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/控件属性/">Android控件属性笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/Chocolatey的安装与使用/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/Chocolatey的安装与使用/">Chocolatey的安装与使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +352,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

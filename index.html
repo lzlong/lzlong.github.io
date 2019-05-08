@@ -152,6 +152,441 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-git笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/08/git笔记/">git笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/08/git笔记/" class="archive-article-date">
+  	<time datetime="2019-05-08T02:59:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>git add 时会报一个错误</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">warning: LF will be replaced by CRLF in XXXXXXXXXXXXXX.</span><br></pre></td></tr></table></figure>
+<p> 解决</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config core.autocrlf false</span><br></pre></td></tr></table></figure>
+<p> 原因是路径中存在 / 的符号转义问题，false就是不转换符号默认是true，相当于把路径的 / 符号进行转义，这样添加的时候就有问题</p>
+</li>
+<li><p>解决github每次push都需要登录的问题</p>
+<ul>
+<li>github需要添加SSHkey</li>
+<li>原因是在建立远程仓库或者克隆项目时，使用的是HTTPS方式 ，HTTPS方式push不会保存用户名和密码</li>
+</ul>
+<ol>
+<li>git remote -v  查看远程连接的方式</li>
+<li>git remote rm origin 删除原先HTTPS的连接方式</li>
+<li>GitHub仓库复制SSH的地址  Clone or download -&gt; Use SSH -&gt; 复制地址</li>
+<li>git remote add origin SSH地址</li>
+<li>git push 提交代码, 如果提示<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fatal: The current branch hexo has no upstream branch.</span><br><span class="line">To push the current branch and set the remote as upstream, use</span><br><span class="line"></span><br><span class="line">   git push --set-upstream origin hexo</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>需要执行 git push –set-upstream origin hexo 把本地分支关联到远程分支</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/08/git笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-百度地图api使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/08/百度地图api使用/">百度地图api使用</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/08/百度地图api使用/" class="archive-article-date">
+  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ul>
+<li>sdk包 按需下载</li>
+<li><p>权限</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//获取设备网络状态，禁用后无法获取网络状态</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span> /&gt;</span><br><span class="line"><span class="comment">//网络权限，当禁用后，无法进行检索等相关业务</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.INTERNET"</span> /&gt;</span><br><span class="line"><span class="comment">//读取设备硬件信息，统计数据</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.READ_PHONE_STATE"</span> /&gt;</span><br><span class="line"><span class="comment">//读取系统信息，包含系统版本等信息，用作统计</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"com.android.launcher.permission.READ_SETTINGS"</span> /&gt;</span><br><span class="line"><span class="comment">//获取设备的网络状态，鉴权所需网络代理</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.ACCESS_WIFI_STATE"</span> /&gt;</span><br><span class="line"><span class="comment">//允许sd卡写权限，需写入地图数据，禁用后无法显示地图</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span> /&gt;</span><br><span class="line"><span class="comment">//这个权限用于进行网络定位</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.WRITE_SETTINGS"</span> /&gt;</span><br><span class="line"><span class="comment">//这个权限用于访问GPS定位</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.ACCESS_COARSE_LOCATION"</span> /&gt;</span><br><span class="line"><span class="comment">//获取统计数据</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.ACCESS_FINE_LOCATION"</span> /&gt;</span><br><span class="line"><span class="comment">//使用步行AR导航，配置Camera权限</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.CAMERA"</span> /&gt;</span><br><span class="line"><span class="comment">//程序在手机屏幕关闭后后台进程仍然运行</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.WAKE_LOCK"</span> /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 秘钥 --&gt;</span><br><span class="line">&lt;application&gt;  </span><br><span class="line">    &lt;meta-data  </span><br><span class="line">        android:name=&quot;com.baidu.lbsapi.API_KEY&quot;  </span><br><span class="line">        android:value=&quot;开发者 key&quot; /&gt;  </span><br><span class="line">&lt;/application&gt;</span><br><span class="line">&lt;!-- 定位服务 --&gt;</span><br><span class="line">&lt;service</span><br><span class="line">    android:name=&quot;com.baidu.location.f&quot;</span><br><span class="line">    android:enabled=&quot;true&quot;</span><br><span class="line">    android:process=&quot;:remote&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在使用SDK各组件之前初始化context信息，传入ApplicationContext   </span></span><br><span class="line">SDKInitializer.initialize(<span class="keyword">this</span>);</span><br><span class="line"><span class="comment">//自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.</span></span><br><span class="line"><span class="comment">//包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。</span></span><br><span class="line">SDKInitializer.setCoordType(CoordType.BD09LL);</span><br></pre></td></tr></table></figure>
+<p>其余的就是根据情况使用了.</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/08/百度地图api使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Windows软件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/08/Windows软件/">Windows软件</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/08/Windows软件/" class="archive-article-date">
+  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>cmder 命令行工具替换cmd</li>
+<li>Chocolatey 相当于apt-get 的软件安装软件</li>
+<li>clash for windows 翻墙软件</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/08/Windows软件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-OpenGL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/08/OpenGL/">OpenGl</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/08/OpenGL/" class="archive-article-date">
+  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="GLSurfaceView"><a href="#GLSurfaceView" class="headerlink" title="GLSurfaceView"></a>GLSurfaceView</h3><h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ol>
+<li>提供并且管理一个独立的Surface。</li>
+<li>提供并且管理一个EGL display，它能让opengl把内容渲染到上述的Surface上。</li>
+<li>支持用户自定义渲染器(Render)，通过setRenderer设置一个自定义的Renderer。</li>
+<li>让渲染器在独立的GLThread线程里运作，和UI线程分离。</li>
+<li>支持按需渲染(on-demand)和连续渲染(continuous)两种模式。</li>
+<li>GPU加速：GLSurfaceView的效率是SurfaceView的30倍以上，SurfaceView使用画布进行绘制，GLSurfaceView利用GPU加速提高了绘制效率。</li>
+<li>View的绘制onDraw(Canvas canvas)使用Skia渲染引擎渲染，而GLSurfaceView的渲染器Renderer的onDrawFrame(GL10 gl)使用opengl绘制引擎进行渲染。</li>
+</ol>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ul>
+<li>可直接使用GLSurfaceView, 如果有复杂操作也可继承重载</li>
+<li>onCreate时设置Renderer, 使用setRenderer()方法</li>
+<li>设置RenderingMode<ul>
+<li>RENDERMODE_CONTINUOUSLY, 刷新的帧率是60FPS，16ms就重绘一次</li>
+<li>RENDERMODE_WHEN_DIRTY,被动渲染，在surfaceCreate的时候会绘制一次，之后只有在调用requestRender或者onResume等方法主动请求重绘时才会进行渲染</li>
+</ul>
+</li>
+</ul>
+<h3 id="GLRender"><a href="#GLRender" class="headerlink" title="GLRender"></a>GLRender</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/08/OpenGL/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-OpenGl矩阵" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/08/OpenGl矩阵/">OpenGl矩阵</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/08/OpenGl矩阵/" class="archive-article-date">
+  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Matrix.setLookAtM(viewMatrix, 0,</span><br><span class="line">            0f, 4f, -1f,//相机位置</span><br><span class="line">            0f, 0f, 0f,//目标位置</span><br><span class="line">            0f, 1f, 0f);//正方向</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/08/OpenGl矩阵/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-手机状态查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/08/手机状态查询/">手机状态查询</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/08/手机状态查询/" class="archive-article-date">
+  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>输入<em>##4636##</em> 可查询手机应用及硬件使用情况</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/08/手机状态查询/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-dart" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -221,19 +656,19 @@
 
 
   
-    <article id="post-手机状态查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-java小知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/08/手机状态查询/">手机状态查询</a>
+      <a class="article-title" href="/2019/05/08/java小知识点/">Java小知识点</a>
     </h1>
   
 
         
-        <a href="/2019/05/08/手机状态查询/" class="archive-article-date">
+        <a href="/2019/05/08/java小知识点/" class="archive-article-date">
   	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
 </a>
         
@@ -241,7 +676,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <ul>
+<li>Collections.addAll() 与 ArrayList.addAll()<ul>
+<li>大型list添加少量元素时建议使用Collections.addAll()，但当List的size较小时，两种方法没有什么区别，甚至ArrayList.addAll()更好。</li>
+<li>添加数组时，没有什么性能差异，添加List时，建议使用ArrayList.addAll()。</li>
+</ul>
+</li>
+</ul>
+
       
 
       
@@ -253,7 +695,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/08/手机状态查询/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/08/java小知识点/">展开全文 >></a>
         </p>
       
 
@@ -283,35 +725,37 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-控件属性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/08/hello-world/">Hello World</a>
+      <a class="article-title" href="/2019/05/08/控件属性/">Android控件属性笔记</a>
     </h1>
   
 
         
-        <a href="/2019/05/08/hello-world/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:30:44.422Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+        <a href="/2019/05/08/控件属性/" class="archive-article-date">
+  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h3 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h3><ul>
+<li><p>滚动条</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:scrollbars=&quot;none&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分割线</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:dividerHeight=&quot;0dp&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>item点击背景</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:listSelector=&quot;@android:color/transparent&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
 
@@ -324,7 +768,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/08/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/08/控件属性/">展开全文 >></a>
         </p>
       
 
@@ -354,6 +798,94 @@
 
 
   
+    <article id="post-Chocolatey的安装与使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/08/Chocolatey的安装与使用/">Chocolatey的安装与使用</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/08/Chocolatey的安装与使用/" class="archive-article-date">
+  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li>windows 下的apt-get</li>
+<li><a href="https://chocolatey.org/" target="_blank" rel="noopener">官网</a><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3>在线安装</li>
+<li><p>管理员打开cmd输入命令</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((new-object net.webclient).DownloadString(&apos;https://chocolatey.org/install.ps1&apos;))&quot; &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</span><br></pre></td></tr></table></figure>
+<p>使用官网命令安装失败, 然后使用上边的命令安装成功, 也可以使用官网的PowerShell命令试一下,离线安装没有读懂</p>
+</li>
+<li>自定义安装位置<br>以上都是安装到了默认位置C:\ProgramData\Chocolatey，如果现在其他地方安装Chocolatey的话，需要新建一个环境变量ChocolateyInstall，值是你希望安装到的文件夹。然后手动创建这个文件夹。然后再运行上面的命令。如果已经安装了，可以再次运行安装命令，这样可以重新安装到你指定的位置。</li>
+<li>升级Chocolatey<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco upgrade chocolatey</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li><p>安装命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">choco install ruby</span><br><span class="line">cinst ruby</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>搜索</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clist ssh</span><br><span class="line">choco list ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">choco uninstall ssh</span><br><span class="line">cuninst ssh</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/08/Chocolatey的安装与使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 

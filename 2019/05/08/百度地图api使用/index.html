@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hexo</title>
+  <title>百度地图api使用 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="配置 sdk包 按需下载 权限   12345678910111213141516171819202122 //获取设备网络状态，禁用后无法获取网络状态&amp;lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&amp;gt;//网络权限，当禁用后，无法进行检索等相关业务&amp;lt;uses-permission a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度地图api使用">
+<meta property="og:url" content="http://yoursite.com/2019/05/08/百度地图api使用/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="配置 sdk包 按需下载 权限   12345678910111213141516171819202122 //获取设备网络状态，禁用后无法获取网络状态&amp;lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&amp;gt;//网络权限，当禁用后，无法进行检索等相关业务&amp;lt;uses-permission a">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-08T02:51:37.736Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="百度地图api使用">
+<meta name="twitter:description" content="配置 sdk包 按需下载 权限   12345678910111213141516171819202122 //获取设备网络状态，禁用后无法获取网络状态&amp;lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&amp;gt;//网络权限，当禁用后，无法进行检索等相关业务&amp;lt;uses-permission a">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,295 +154,176 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-百度地图api使用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      百度地图api使用
+    </h1>
+  
+
+        
+        <a href="/2019/05/08/百度地图api使用/" class="archive-article-date">
+  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ul>
+<li>sdk包 按需下载</li>
+<li><p>权限</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//获取设备网络状态，禁用后无法获取网络状态</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span> /&gt;</span><br><span class="line"><span class="comment">//网络权限，当禁用后，无法进行检索等相关业务</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.INTERNET"</span> /&gt;</span><br><span class="line"><span class="comment">//读取设备硬件信息，统计数据</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.READ_PHONE_STATE"</span> /&gt;</span><br><span class="line"><span class="comment">//读取系统信息，包含系统版本等信息，用作统计</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"com.android.launcher.permission.READ_SETTINGS"</span> /&gt;</span><br><span class="line"><span class="comment">//获取设备的网络状态，鉴权所需网络代理</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.ACCESS_WIFI_STATE"</span> /&gt;</span><br><span class="line"><span class="comment">//允许sd卡写权限，需写入地图数据，禁用后无法显示地图</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span> /&gt;</span><br><span class="line"><span class="comment">//这个权限用于进行网络定位</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.WRITE_SETTINGS"</span> /&gt;</span><br><span class="line"><span class="comment">//这个权限用于访问GPS定位</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.ACCESS_COARSE_LOCATION"</span> /&gt;</span><br><span class="line"><span class="comment">//获取统计数据</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.ACCESS_FINE_LOCATION"</span> /&gt;</span><br><span class="line"><span class="comment">//使用步行AR导航，配置Camera权限</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.CAMERA"</span> /&gt;</span><br><span class="line"><span class="comment">//程序在手机屏幕关闭后后台进程仍然运行</span></span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.WAKE_LOCK"</span> /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 秘钥 --&gt;</span><br><span class="line">&lt;application&gt;  </span><br><span class="line">    &lt;meta-data  </span><br><span class="line">        android:name=&quot;com.baidu.lbsapi.API_KEY&quot;  </span><br><span class="line">        android:value=&quot;开发者 key&quot; /&gt;  </span><br><span class="line">&lt;/application&gt;</span><br><span class="line">&lt;!-- 定位服务 --&gt;</span><br><span class="line">&lt;service</span><br><span class="line">    android:name=&quot;com.baidu.location.f&quot;</span><br><span class="line">    android:enabled=&quot;true&quot;</span><br><span class="line">    android:process=&quot;:remote&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在使用SDK各组件之前初始化context信息，传入ApplicationContext   </span></span><br><span class="line">SDKInitializer.initialize(<span class="keyword">this</span>);</span><br><span class="line"><span class="comment">//自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.</span></span><br><span class="line"><span class="comment">//包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。</span></span><br><span class="line">SDKInitializer.setCoordType(CoordType.BD09LL);</span><br></pre></td></tr></table></figure>
+<p>其余的就是根据情况使用了.</p>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/git笔记/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:59:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/git笔记/">git笔记</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/08/百度地图api使用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/百度地图api使用/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/05/08/git笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          git笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/08/Windows软件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Windows软件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/百度地图api使用/">百度地图api使用</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/Windows软件/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/Windows软件/">Windows软件</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/OpenGL/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/OpenGL/">OpenGl</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/OpenGl矩阵/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/OpenGl矩阵/">OpenGl矩阵</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/手机状态查询/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/手机状态查询/">手机状态查询</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/dart/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/dart/">dart</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/java小知识点/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/java小知识点/">Java小知识点</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/控件属性/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/控件属性/">Android控件属性笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/Chocolatey的安装与使用/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/Chocolatey的安装与使用/">Chocolatey的安装与使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +347,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
