@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="准备 有一个github账号，没有的话去注册一个； 安装了node.js、npm，并了解相关基础知识； 安装了git for windows（或者其它git客户端）  开始 创建仓库 创建一个名为’你的用户名.github.io’的仓库,将来你的网站访问地址就是 http://你的用户名.github.io 了 ps: 仓库名字必须是：username.github.io，其中username是你">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-08T02:58:07.886Z">
+<meta property="og:updated_time" content="2019-05-08T03:59:51.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github搭建博客">
 <meta name="twitter:description" content="准备 有一个github账号，没有的话去注册一个； 安装了node.js、npm，并了解相关基础知识； 安装了git for windows（或者其它git客户端）  开始 创建仓库 创建一个名为’你的用户名.github.io’的仓库,将来你的网站访问地址就是 http://你的用户名.github.io 了 ps: 仓库名字必须是：username.github.io，其中username是你">
@@ -232,6 +232,11 @@
 <li><p>执行 hexo d</p>
 </li>
 <li>如果报 Deployer not found: github 或者 Deployer not found: git 错误则执行npm install hexo-deployer-git –save</li>
+<li><p>如果报</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">warning: LF will be replaced by CRLF in XXXXXXXXXXXXXX.</span><br></pre></td></tr></table></figure>
+<p> 解决</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.autocrlf false</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h4 id="保留CNAME、README-md等文件"><a href="#保留CNAME、README-md等文件" class="headerlink" title="保留CNAME、README.md等文件"></a>保留CNAME、README.md等文件</h4><ul>
 <li>非md文件可以把他们放到source文件夹</li>
@@ -343,18 +348,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/08/Chocolatey的安装与使用/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/08/OpenGL/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Chocolatey的安装与使用
+          OpenGl
         
       </div>
     </a>
   
   
-    <a href="/2019/05/08/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2019/05/08/java小知识点/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java小知识点</div>
       <i class="icon-circle-right"></i>
     </a>
   
