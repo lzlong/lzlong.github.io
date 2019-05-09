@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/newBranch.png">
 <meta property="og:image" content="http://yoursite.com/images/默认分支.png">
-<meta property="og:updated_time" content="2019-05-09T02:06:49.588Z">
+<meta property="og:updated_time" content="2019-05-09T08:10:47.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github搭建博客">
 <meta name="twitter:description" content="准备 有一个github账号，没有的话去注册一个； 安装了node.js、npm，并了解相关基础知识； 安装了git for windows（或者其它git客户端）">
@@ -450,23 +450,24 @@
 <ul>
 <li><p>Front-matter<br>hexo 创建的md文件会在最上方默认有一个用 <code>---</code> 分隔的区域这个区域就是 Front-matter<br>默认有三个参数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: 标题</span><br><span class="line">date: 2019-05-08 10:41:08</span><br><span class="line">tags:</span><br></pre></td></tr></table></figure>
-<p>这个区域预定义的参数有</p>
+<p>这个区域预定义的参数有  (不清楚原因不支持md的表格语法, 所以 换成了<code>&lt;table&gt;</code>标签)<br><table>    <tr><td>参数</td><td>描述</td></tr>    <tr><td>layout</td><td>布局</td></tr>    <tr><td>title</td><td>标题</td></tr>    <tr><td>date</td><td>建立日期</td></tr>    <tr><td>updated</td><td>更新日期</td></tr>    <tr><td>comments</td><td>开启文章的评论功能</td></tr>    <tr><td>tags</td><td>标签(不适用于分页)</td></tr>    <tr><td>categories</td><td>分类(不适用于分页)</td></tr>  <tr><td>permalink</td><td>覆盖文章网址</td></tr>    </table><br>如果需要修改或新增默认参数可以在scaffolds文件夹下的post.md中修改(hexo new “” 创建默认使用post模板)<br>其中，分类和标签需要区别一下，分类具有顺序性和层次性，也就是说 Foo, Bar 不等于 Bar, Foo；而标签没有顺序和层次.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">- Diary</span><br><span class="line">tags:</span><br><span class="line">- PS3</span><br><span class="line">- Games</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>layout<br><code>hexo new &quot;&quot;</code> 默认使用<code>post</code>布局, 生成的文件在<code>/source/_post</code>中<br>hexo 有三种默认布局: <code>post</code>, <code>page</code>, <code>draft</code>生成的文件路径不同, 自定义布局的路径和post路径相同<br><table>  <tr> <td>布局</td> <td>路径</td> </tr> <tr><td><code>post</code></td> <td><code>source/_posts</code></td> </tr> <tr><td><code>page</code></td> <td><code>source</code></td></tr>  <tr><td><code>draft</code></td> <td><code>source/_drafts</code></td></tr>  </table><br>所以new命令应该是<code>hexo new [layout] &lt;title&gt;</code> 默认layout是post</p>
+</li>
+<li><p>page<br><code>hexo new page &quot;newPage&quot;</code>用于另起一页, 会在source下创建一个名为newPage的文件夹和index.md的文件, newPage的路径就是<code>http://xxx.xxx/board</code></p>
+</li>
+<li>draft<br><code>hexo new draft newpage</code>draft文件是草稿文件, 并不会直接展示在首页列表, 要预览草稿文件需要<code>hexo server --draft</code>, 发表草稿文件则为<code>hexo publish draft newpage</code></li>
 </ul>
 </li>
+<li><p>图片</p>
+<ul>
+<li>少量图片可以在source文件夹下新建images文件夹然后将图片复制到文件夹下, 引用方式为<code>![title](images/a.jpeg)</code></li>
+<li>大量图片时需要在根目录的_config文件中将<code>post_asset_folder</code>置为true, 这样在<code>hexo new &quot;&quot;</code>时会随之生成一个同名文件夹, 可以将图片复制到文件夹下, 引用方式<code>![](a.jpeg)</code>这种方式并不会将图片展示在首页列表中.<br>需要在首页列表中展示图片则引用方式如下:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img a.jpeg This is an example image %&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<pre><code>|参数             |描述                            |
-|:------------:|:-------------------------:|
-|layout           |布局                            |
-|title              |标题                            |
-|date               |建立日期                    |
-|updated      |更新日期                    |
-|comments     |开启文章的评论功能 |
-|tags               |标签(不适用于分页)  |
-|categories     |分类(不适用于分页)  |
-|permalink    |覆盖文章网址             |
-</code></pre><ul>
-<li>图片</li>
+<p>当在主题中设置首页列表不显示文章全部信息时大概率上面的方式也不会在首页列表中显示图片<br>搭建暂时就只有这些内容, 我会在另一篇文章中详细介绍我的hexo和主题是如何配置的</p>
+</li>
 </ul>
 <h3 id="引用及参考"><a href="#引用及参考" class="headerlink" title="引用及参考"></a>引用及参考</h3><ul>
 <li><a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html</a></li>
@@ -504,8 +505,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/08/Windows软件/" rel="next" title="Windows软件">
-                <i class="fa fa-chevron-left"></i> Windows软件
+              <a href="/2019/05/08/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -514,8 +515,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/08/OpenGl矩阵/" rel="prev" title="OpenGl矩阵">
-                OpenGl矩阵 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/08/手机状态查询/" rel="prev" title="手机状态查询">
+                手机状态查询 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -680,15 +681,9 @@
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
