@@ -2,7 +2,6 @@
 title: Hexo+Github搭建博客
 date: 2019-05-08 10:41:08
 categories:
- - github
  - hexo
 tags:
  - hexo
@@ -106,7 +105,7 @@ Hi liuxianan! You've successfully authenticated, but GitHub does not provide she
   ```
 
 #### 常用命令
- * 常用命令 
+ * 常用命令
      ```
     hexo new "postName" #新建文章
     hexo new page "pageName" #新建页面
@@ -129,6 +128,54 @@ Hi liuxianan! You've successfully authenticated, but GitHub does not provide she
     hexo s -g #生成并本地预览
     hexo d -g #生成并上传
     ```
+
+#### 写作
+ * md语法
+   语法不在此详细介绍可以参考下面的地址
+   [MD语法入门](https://www.jianshu.com/p/399e5a3c7cc5)
+    [Markdown基本语法](https://www.jianshu.com/p/191d1e21f7ed)
+    [官网教程](http://www.markdown.cn/)
+ * hexo特性
+  * Front-matter
+    hexo 创建的md文件会在最上方默认有一个用 `---` 分隔的区域这个区域就是 Front-matter
+    默认有三个参数
+    ```
+    title: 标题
+    date: 2019-05-08 10:41:08
+    tags:
+    ```
+    这个区域预定义的参数有  (不清楚原因不支持md的表格语法, 所以 换成了`<table>`标签)
+    <table>    <tr><td>参数</td><td>描述</td></tr>    <tr><td>layout</td><td>布局</td></tr>    <tr><td>title</td><td>标题</td></tr>    <tr><td>date</td><td>建立日期</td></tr>    <tr><td>updated</td><td>更新日期</td></tr>    <tr><td>comments</td><td>开启文章的评论功能</td></tr>    <tr><td>tags</td><td>标签(不适用于分页)</td></tr>    <tr><td>categories</td><td>分类(不适用于分页)</td></tr>  <tr><td>permalink</td><td>覆盖文章网址</td></tr>    </table>
+    如果需要修改或新增默认参数可以在scaffolds文件夹下的post.md中修改(hexo new "" 创建默认使用post模板)
+    其中，分类和标签需要区别一下，分类具有顺序性和层次性，也就是说 Foo, Bar 不等于 Bar, Foo；而标签没有顺序和层次.
+    ```
+    categories:
+    - Diary
+    tags:
+    - PS3
+    - Games
+    ```
+  * layout
+  `hexo new ""` 默认使用`post`布局, 生成的文件在`/source/_post`中
+  hexo 有三种默认布局: `post`, `page`, `draft`生成的文件路径不同, 自定义布局的路径和post路径相同
+  <table>  <tr> <td>布局</td> <td>路径</td> </tr> <tr><td>`post`</td> <td>`source/_posts`</td> </tr> <tr><td>`page`</td> <td>`source`</td></tr>  <tr><td>`draft`</td> <td>`source/_drafts`</td></tr>  </table>
+  所以new命令应该是`hexo new [layout] <title>` 默认layout是post
+
+   * page
+   `hexo new page "newPage"`用于另起一页, 会在source下创建一个名为newPage的文件夹和index.md的文件, newPage的路径就是`http://xxx.xxx/board`
+   * draft
+   `hexo new draft newpage`draft文件是草稿文件, 并不会直接展示在首页列表, 要预览草稿文件需要`hexo server --draft`, 发表草稿文件则为`hexo publish draft newpage`
+
+ * 图片
+  * 少量图片可以在source文件夹下新建images文件夹然后将图片复制到文件夹下, 引用方式为`![title](images/a.jpeg)`
+  * 大量图片时需要在根目录的_config文件中将`post_asset_folder`置为true, 这样在`hexo new ""`时会随之生成一个同名文件夹, 可以将图片复制到文件夹下, 引用方式`![](a.jpeg)`这种方式并不会将图片展示在首页列表中.
+  需要在首页列表中展示图片则引用方式如下:
+  ```
+  {% asset_img a.jpeg This is an example image %}
+  ```
+  当在主题中设置首页列表不显示文章全部信息时大概率上面的方式也不会在首页列表中显示图片
+  搭建暂时就只有这些内容, 我会在另一篇文章中详细介绍我的hexo和主题是如何配置的
+
 ### 引用及参考
  * https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html
  * https://blog.csdn.net/sinat_37781304/article/details/82729029
