@@ -88,7 +88,7 @@
 <meta property="og:description" content="Hexo配置 配置文件为根目录下_config.yml 配置参数详解, 该地址有配置文件参数的详细介绍再次就不一一列举, 只写我用到的几个 网站  参数描述  title网站标题  subtitle网站副标题  description网站描述  author您的名字  language网站使用的语言  timezone网站时区。Hexo 默认使用您电脑的时区。时区列表。比如说：America/Ne">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Hexo使用Next主题及配置/validation-default-scheme-mac.png">
-<meta property="og:updated_time" content="2019-05-15T02:55:46.591Z">
+<meta property="og:updated_time" content="2019-05-15T06:37:08.158Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo使用Next主题及配置">
 <meta name="twitter:description" content="Hexo配置 配置文件为根目录下_config.yml 配置参数详解, 该地址有配置文件参数的详细介绍再次就不一一列举, 只写我用到的几个 网站  参数描述  title网站标题  subtitle网站副标题  description网站描述  author您的名字  language网站使用的语言  timezone网站时区。Hexo 默认使用您电脑的时区。时区列表。比如说：America/Ne">
@@ -435,6 +435,30 @@
 </ul>
 </li>
 </ul>
+</li>
+<li><p>菜单页面 添加菜单页面</p>
+<ul>
+<li><p>标签页面</p>
+<ul>
+<li>新建页面 <code>hexo new page tags</code> 会在 source 文件夹下生成 tags 的文件夹以及 index.md 文件</li>
+<li><p>设置页面类型, 在文件头部添加 type 值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2014-12-22 12:39:04</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改菜单, 在主题配置文件中将 menu 菜单添加 tags 项, 用于展示在侧边栏</p>
+</li>
+</ul>
+</li>
+<li>其他页面, 需要添加其他页面时和 tags 页面操作相同</li>
+<li>404 页面, 按照上文添加 404 页面, 然后添加以下内容<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"content-type"</span> <span class="attr">content</span>=<span class="string">"text/html;charset=utf-8;"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge,chrome=1"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"robots"</span> <span class="attr">content</span>=<span class="string">"all"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"robots"</span> <span class="attr">content</span>=<span class="string">"index,follow"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"https://qzone.qq.com/gy/404/style/404style.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/plain"</span> <span class="attr">src</span>=<span class="string">"http://www.qq.com/404/search_children.js"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">charset</span>=<span class="string">"utf-8"</span> <span class="attr">homePageUrl</span>=<span class="string">"/"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">homePageName</span>=<span class="string">"回到我的主页"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://qzone.qq.com/gy/404/data.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://qzone.qq.com/gy/404/page.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>部署到 github 之后当输入一个找不到的地址时就会自动出现 404 页面, 内容时腾讯的寻找丢失儿童的公益 404 页面</p>
+</li>
+<li><p>动画效果 motion</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">motion:</span><br><span class="line">  enable: true # 开启动画效果</span><br><span class="line">  enable: false # 关闭动画效果</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>背景动画</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># canvas_nest</span><br><span class="line">canvas_nest: true //开启动画</span><br><span class="line">canvas_nest: false //关闭动画</span><br><span class="line"># three_waves</span><br><span class="line">three_waves: true //开启动画</span><br><span class="line">three_waves: false //关闭动画</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
