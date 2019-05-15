@@ -69,3 +69,72 @@ tags:
       something: 有料 # 新增项
     ```
   3. menu图标设置
+    * 图标对应字段为 menu_icons 格式相同为key: value, key与第一项中的菜单名称对应, value 为Font Awesome图标的名称, enable 控制是否显示图标 key 值大小写要严格匹配
+ * 侧栏 sidebar
+  1. 位置 sidebar.position
+    * left - 靠左放置
+    * right - 靠右放置
+    > 目前仅 Pisces Scheme 支持 position 配置
+
+  2. 显示时机 sidebar.display
+    * post - 默认行为，在文章页面（拥有目录列表）时显示
+    * always - 在所有页面中都显示
+    * hide - 在所有页面中都隐藏（可以手动展开）
+    * remove - 完全移除
+    > 已知侧栏在 use motion: false 的情况下不会展示
+
+  * 头像 avatar
+    * 网络地址  完整的url
+    * 站内地址  将头像放置主题目录下的 source/uploads/ （新建 uploads 目录若不存在）
+      配置为：avatar: /uploads/avatar.png, 或者source/images/ 目录下
+      配置为：avatar: /images/avatar.png
+ * 菜单页面 添加菜单页面
+  * 标签页面
+    * 新建页面 `hexo new page tags` 会在 source 文件夹下生成 tags 的文件夹以及 index.md 文件
+    * 设置页面类型, 在文件头部添加 type 值
+    ```
+    ---
+    title: 标签
+    date: 2014-12-22 12:39:04
+    type: "tags"
+    ---
+    ```
+    * 修改菜单, 在主题配置文件中将 menu 菜单添加 tags 项, 用于展示在侧边栏
+  * 其他页面, 需要添加其他页面时和 tags 页面操作相同
+  * 404 页面, 按照上文添加 404 页面, 然后添加以下内容
+  ```html
+  <!DOCTYPE HTML>
+  <html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8;"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="robots" content="all" />
+    <meta name="robots" content="index,follow"/>
+    <link rel="stylesheet" type="text/css" href="https://qzone.qq.com/gy/404/style/404style.css">
+  </head>
+  <body>
+    <script type="text/plain" src="http://www.qq.com/404/search_children.js"
+            charset="utf-8" homePageUrl="/"
+            homePageName="回到我的主页">
+    </script>
+    <script src="https://qzone.qq.com/gy/404/data.js" charset="utf-8"></script>
+    <script src="https://qzone.qq.com/gy/404/page.js" charset="utf-8"></script>
+  </body>
+  </html>
+  ```
+  部署到 github 之后当输入一个找不到的地址时就会自动出现 404 页面, 内容时腾讯的寻找丢失儿童的公益 404 页面
+ * 动画效果 motion
+  ```
+  motion:
+    enable: true # 开启动画效果
+    enable: false # 关闭动画效果
+  ```
+ * 背景动画
+   ```
+   # canvas_nest
+   canvas_nest: true //开启动画
+   canvas_nest: false //关闭动画
+   # three_waves
+   three_waves: true //开启动画
+   three_waves: false //关闭动画
+   ```
