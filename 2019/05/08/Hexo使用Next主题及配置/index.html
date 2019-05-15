@@ -88,7 +88,7 @@
 <meta property="og:description" content="Hexo配置 配置文件为根目录下_config.yml 配置参数详解, 该地址有配置文件参数的详细介绍再次就不一一列举, 只写我用到的几个 网站  参数描述  title网站标题  subtitle网站副标题  description网站描述  author您的名字  language网站使用的语言  timezone网站时区。Hexo 默认使用您电脑的时区。时区列表。比如说：America/Ne">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Hexo使用Next主题及配置/validation-default-scheme-mac.png">
-<meta property="og:updated_time" content="2019-05-09T10:07:56.207Z">
+<meta property="og:updated_time" content="2019-05-15T02:55:46.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo使用Next主题及配置">
 <meta name="twitter:description" content="Hexo配置 配置文件为根目录下_config.yml 配置参数详解, 该地址有配置文件参数的详细介绍再次就不一一列举, 只写我用到的几个 网站  参数描述  title网站标题  subtitle网站副标题  description网站描述  author您的名字  language网站使用的语言  timezone网站时区。Hexo 默认使用您电脑的时区。时区列表。比如说：America/Ne">
@@ -399,8 +399,42 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: 首页</span><br><span class="line">  archives: 归档</span><br><span class="line">  categories: 分类</span><br><span class="line">  tags: 标签</span><br><span class="line">  about: 关于</span><br><span class="line">  search: 搜索</span><br><span class="line">  commonweal: 公益404</span><br><span class="line">  something: 有料 # 新增项</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>menu图标设置</p>
+<ul>
+<li>图标对应字段为 menu_icons 格式相同为key: value, key与第一项中的菜单名称对应, value 为Font Awesome图标的名称, enable 控制是否显示图标 key 值大小写要严格匹配</li>
+</ul>
 </li>
 </ol>
+</li>
+<li><p>侧栏 sidebar</p>
+<ol>
+<li><p>位置 sidebar.position</p>
+<ul>
+<li>left - 靠左放置</li>
+<li>right - 靠右放置<blockquote>
+<p>目前仅 Pisces Scheme 支持 position 配置</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>显示时机 sidebar.display</p>
+<ul>
+<li>post - 默认行为，在文章页面（拥有目录列表）时显示</li>
+<li>always - 在所有页面中都显示</li>
+<li>hide - 在所有页面中都隐藏（可以手动展开）</li>
+<li>remove - 完全移除<blockquote>
+<p>已知侧栏在 use motion: false 的情况下不会展示</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>头像 avatar<ul>
+<li>网络地址  完整的url</li>
+<li>站内地址  将头像放置主题目录下的 source/uploads/ （新建 uploads 目录若不存在）<br>配置为：avatar: /uploads/avatar.png, 或者source/images/ 目录下<br>配置为：avatar: /images/avatar.png</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 
