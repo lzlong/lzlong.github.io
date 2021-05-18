@@ -94,6 +94,7 @@ Hi liuxianan! You've successfully authenticated, but GitHub does not provide she
   node_modules/
   public/
   .deploy*/
+  package-lock.json
   ```
   没有创建一个, 有则保证内容一致, 当前文件在hexo根目录下
   * 如果clone过主题文件需要删除主题文件夹下的.git否则不能上传
@@ -103,6 +104,10 @@ Hi liuxianan! You've successfully authenticated, but GitHub does not provide she
   git commit –m "add branch"
   git push
   ```
+
+#### 更换机器
+ * clone 源文件
+ * npm i 安装 hexo 等依赖包
 
 #### 常用命令
  * 常用命令
