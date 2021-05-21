@@ -17,3 +17,9 @@ tags:
  * 用管理员身份打开cmd窗口，然后运行命令：
  ```mklink /j "C:\Program Files\Docker" "D:\docker-image"```
   在此之前要先创建"D:\docker-image"目录，最后安装docker就可以了。
+### 更改镜像安装目录
+ * 停止docker 图标右键 Quit Docker Desktop
+ * wsl --list -v 查看
+ * 导出数据 ```wsl --export docker-desktop-data "F:\Docker\wsl\data\docker-desktop-data.tar"```
+ * 删除旧数据(数据未备份前请谨慎操作) ```wsl --unregister docker-desktop-data```
+ * 导入数据到新盘 ```wsl --import docker-desktop-data "F:\Docker\wsl\data" "F:\Docker\wsl\data\docker-desktop-data.tar" --version 2``` 命令执行完毕后会在当前目录下会生成一个 ext4.vhdx 虚拟磁盘.
