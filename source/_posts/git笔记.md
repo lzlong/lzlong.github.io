@@ -74,3 +74,7 @@ tags:
     git commit --amend
     这时候会进入vim编辑器，修改完成你要的注释后保存即可。
   ```
+ * 查看所有分支
+  git branch -a
+ * clone 远程分支
+  git checkout -b dev origin/dev
