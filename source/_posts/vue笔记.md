@@ -26,3 +26,9 @@ tags:
     .left => // 左
     .right => // 右
   ```
+* element 主动收起时间及日期选择器
+ ```
+    if(t.$refs.datePicker){
+      t.$refs.datePicker.hidePicker();
+    }
+ ```

@@ -78,3 +78,48 @@ tags:
   git branch -a
  * clone 远程分支
   git checkout -b dev origin/dev
+ * 合并分支
+
+    想将dev分支合并到master分支，操作如下：
+  
+    1  首先切换到master分支上
+
+      ```git  checkout master```
+
+    2  如果是多人开发的话 需要把远程master上的代码pull下来
+
+      ```git pull origin master```
+  
+    //如果是自己一个开发就没有必要了，为了保险期间还是pull
+
+    3  然后我们把dev分支的代码合并到master上
+
+      ```git  merge dev```
+
+    4  然后查看状态及执行提交命令
+    ```
+      git status
+
+      On branch master
+      Your branch is ahead of 'origin/master' by 12 commits.
+        (use "git push" to publish your local commits)
+      nothing to commit, working tree clean
+
+      //上面的意思就是你有12个commit，需要push到远程master上 
+      > 最后执行下面提交命令
+      git push origin master
+    ```
+    5  其他命令
+    ```
+      更新远程分支列表
+      git remote update origin --prune
+
+      查看所有分支
+      git branch -a
+
+      删除远程分支Chapater6
+      git push origin --delete Chapater6
+
+      删除本地分支 Chapater6
+      git branch -d  Chapater6
+    ```
