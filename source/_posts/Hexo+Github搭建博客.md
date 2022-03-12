@@ -107,7 +107,8 @@ Hi liuxianan! You've successfully authenticated, but GitHub does not provide she
 
 #### 更换机器
  * clone 源文件
- * npm i 安装 hexo 等依赖包
+ * npm install -g hexo 全局安装 hexo
+ * npm i 安装 依赖包
 
 #### 常用命令
  * 常用命令
