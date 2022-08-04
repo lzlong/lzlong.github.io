@@ -11,7 +11,8 @@ tags:
 以管理员模式打开cmd，并且进入到Cmder.exe所在的目录，执行如下命令添加到右键菜单
 ```Cmder.exe /REGISTER ALL```
 * 修改命令输入提示符'λ'为'$'
-修改~\cmder\config\cmder_prompt_config.lua 文件，将 'λ' 修改为 'λ'
+修改~\cmder\config\cmder_prompt_config.lua 文件，将 'λ' 修改为 '$'  新版没有这个文件
+修改~\cmder\vendor 文件，将 'λ' 修改为 '$'
 ```  ```
 * 解决中文乱码
 按 win + alt + p 键或点击默认右下角 settings 选项打开设置界面
@@ -48,5 +49,7 @@ ls=ls --show-control-chars -F
     ```
 * settings
  1. startup -> specified named task {cmder::Cmder}
- 2. General -> Fonts 去掉Monospace选项
- 3. Features -> Transparency Active window transparency
+ 2. Main -> Fonts 去掉Monospace选项
+ 3. Main -> Fonts 去掉Compress long string to fit space选项 中文重叠
+ 4. Features -> Transparency Active window transparency
+ 5. Startup-Task -> {cmd::Cmder} *cmd /k "%ConEmuDir%\..\init.bat"  -new_console:d:%USERPROFILE% 改为 cmd /k "%ConEmuDir%\..\init.bat"  -new_console:d:D:\   默认打开路径

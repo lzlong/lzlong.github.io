@@ -26,9 +26,28 @@ tags:
     .left => // 左
     .right => // 右
   ```
+* ${}
+  使用 ${} 拼接字符串 字符串整体 不使用 ''/"" 包裹 使用 `` 包裹
+### element-ui 相关
 * element 主动收起时间及日期选择器
  ```
     if(t.$refs.datePicker){
       t.$refs.datePicker.hidePicker();
     }
  ```
+### vant-ui 相关
+
+### 其它依赖 相关
+#### vue-pdf
+ * 请求url需要加 hander  pdf.createLoadingTask({ url: url, httpHeaders:this.headers, CMapReaderFactory });
+#### pdfh5 
+ * 请求url需要加 hander
+ ```
+ this.pdfh5 = new Pdfh5("#pdfPage", {
+        pdfurl: url,
+        goto: 0,
+        type:"fetch", //需要写 不写 加不上 header
+        httpHeaders: this.headers
+      });
+ ```
+ * pdf 的div 需要 高度样式 不然只展示一页
